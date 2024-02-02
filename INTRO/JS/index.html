@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RXJS CDN</title>
+
+    <!--Incudo la libreria rxjs recuperabile da git: https://rxjs.dev/guide/installation-->
+    <script src="https://unpkg.com/rxjs@%5E7/dist/bundles/rxjs.umd.min.js"></script>
+
+    <script>
+        console.log(rxjs); //Mostra tutti i metodi rxjs
+
+        const { fromEvent, throttleTime, scan } = rxjs;
+
+        fromEvent(document, 'click')
+            .pipe(
+                throttleTime(1000),
+                scan((count) => count + 1, 0)
+            )
+            .subscribe((count) => console.log(`Clicked ${count} times`));
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
